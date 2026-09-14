@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel Admin · Torneo Relámpago F-10</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="stadium-bg">
+
+  <!-- ---------------- LOGIN ---------------- -->
+  <div class="login-wrap" id="loginWrap">
+    <div class="login-box">
+      <img src="assets/logo.png" alt="Escudo F-10">
+      <h1>Panel Admin</h1>
+      <form id="loginForm">
+        <div class="field" style="text-align:left">
+          <label>Correo</label>
+          <input type="email" id="loginEmail" required placeholder="admin@f10.com">
+        </div>
+        <div class="field" style="text-align:left">
+          <label>Contraseña</label>
+          <input type="password" id="loginPassword" required placeholder="••••••••">
+        </div>
+        <div id="loginStatus"></div>
+        <button type="submit" class="btn" style="width:100%;justify-content:center">Ingresar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ---------------- PANEL ADMIN ---------------- -->
+  <div id="adminShell" style="display:none">
+    <div class="container">
+      <div class="admin-header">
+        <div class="brand">
+          <img src="assets/logo.png" alt="Escudo F-10" style="height:40px">
+          <div class="brand-text">
+            <div class="club" style="font-size:16px">PANEL ADMIN <span>F-10</span></div>
+          </div>
+        </div>
+        <button class="btn secondary" id="logoutBtn">Cerrar sesión</button>
+      </div>
+
+      <div class="admin-tabs">
+        <button class="tab-btn admin-tab-btn active" data-target="tab-cuadro">Cuadro</button>
+        <button class="tab-btn admin-tab-btn" data-target="tab-equipos">Equipos</button>
+        <button class="tab-btn admin-tab-btn" data-target="tab-partidos">Partidos y resultados</button>
+      </div>
+
+      <div class="admin-panel active" id="tab-cuadro">
+        <div class="section-title"><h2 style="font-size:24px">Inicializar el cuadro</h2></div>
+        <p class="section-desc" style="margin-top:0">
+          Este paso crea los 15 partidos del torneo (8 octavos, 4 cuartos, 2 semifinales y la final) vacíos.
+          Solo debes hacerlo una vez, al comienzo del torneo. Luego, cuando registres un equipo con una
+          semilla del 1 al 16, se asignará automáticamente a su partido de octavos.
+        </p>
+        <div id="seedBox"></div>
+      </div>
+
+      <div class="admin-panel" id="tab-equipos">
+        <div class="section-title" style="justify-content:space-between">
+          <h2 style="font-size:24px">Equipos</h2>
+          <button class="btn gold" id="newTeamBtn">+ Nuevo equipo</button>
+        </div>
+        <div id="teamsList"></div>
+      </div>
+
+      <div class="admin-panel" id="tab-partidos">
+        <div class="section-title"><h2 style="font-size:24px">Partidos y resultados</h2></div>
+        <p class="section-desc" style="margin-top:0">Un partido se puede registrar cuando ambos equipos ya son conocidos (el rival de cuartos/semis/final se llena solo cuando termina el partido anterior).</p>
+        <div id="matchesContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------- MODAL: EQUIPO ---------------- -->
+  <div class="modal-backdrop" id="teamModalBackdrop" style="display:none">
+    <div class="modal">
+      <button class="modal-close" id="closeTeamModal">✕</button>
+      <h3 id="teamModalTitle">Nuevo equipo</h3>
+      <form id="teamForm">
+        <div class="row-flex">
+          <div class="field">
+            <label>Nombre del equipo</label>
+            <input type="text" id="teamName" required placeholder="Ej: Los Halcones FC">
+          </div>
+          <div class="field">
+            <label>Semilla en el cuadro (1-16)</label>
+            <select id="teamSeed"></select>
+          </div>
+        </div>
+
+        <div class="subhead">Jugadores</div>
+        <div id="playersContainer"></div>
+        <button type="button" class="btn secondary" id="addPlayerBtn" style="margin-bottom:16px">+ Agregar jugador</button>
+
+        <div id="teamFormStatus"></div>
+        <button type="submit" class="btn" style="width:100%;justify-content:center">Guardar equipo</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ---------------- MODAL: RESULTADO DE PARTIDO ---------------- -->
+  <div class="modal-backdrop" id="matchModalBackdrop" style="display:none">
+    <div class="modal" style="max-width:640px">
+      <button class="modal-close" id="closeMatchModal">✕</button>
+      <h3 id="matchModalTitle">Resultado</h3>
+      <form id="matchForm">
+        <div class="row-flex">
+          <div class="field">
+            <label id="matchTeamALabel">Equipo A</label>
+            <input type="number" id="scoreA" min="0" required placeholder="Goles">
+          </div>
+          <div class="field">
+            <label id="matchTeamBLabel">Equipo B</label>
+            <input type="number" id="scoreB" min="0" required placeholder="Goles">
+          </div>
+        </div>
+        <div class="row-flex">
+          <div class="field">
+            <label>Penales equipo A (solo si hay empate)</label>
+            <input type="number" id="penA" min="0">
+          </div>
+          <div class="field">
+            <label>Penales equipo B (solo si hay empate)</label>
+            <input type="number" id="penB" min="0">
+          </div>
+        </div>
+
+        <div class="subhead">Goles</div>
+        <div id="goalsContainer"></div>
+        <button type="button" class="btn secondary" id="addGoalBtn" style="margin-bottom:16px">+ Agregar gol</button>
+
+        <div class="subhead">Tarjetas</div>
+        <div id="cardsContainer"></div>
+        <button type="button" class="btn secondary" id="addCardBtn" style="margin-bottom:16px">+ Agregar tarjeta</button>
+
+        <div id="matchFormStatus"></div>
+        <button type="submit" class="btn" style="width:100%;justify-content:center">Guardar resultado</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

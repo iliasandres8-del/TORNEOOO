@@ -1,0 +1,23 @@
+rules_version = '2';
+
+// ============================================================
+// Reglas de Firestore — Torneo Relámpago F-10
+// - Cualquier persona puede LEER equipos y partidos (para ver
+//   el cuadro, goleadores, tarjetas, etc. en la página pública).
+// - Solo un usuario autenticado (el admin creado en Firebase
+//   Authentication) puede CREAR, EDITAR o BORRAR datos.
+// ============================================================
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /teams/{teamId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+
+    match /matches/{matchId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

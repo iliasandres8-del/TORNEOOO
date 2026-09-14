@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torneo Relámpago · Club Deportivo F-10</title>
+<meta name="description" content="Torneo Relámpago Club Deportivo F-10: cuadro de eliminación, equipos, goleadores, tarjetas y resultados en vivo.">
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="stadium-bg">
+
+  <header class="site-header">
+    <div class="container">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Escudo Club Deportivo F-10">
+        <div class="brand-text">
+          <div class="club">CLUB DEPORTIVO <span>F-10</span></div>
+          <div class="tag">PASIÓN · DISCIPLINA · FÚTBOL</div>
+        </div>
+      </div>
+      <button class="nav-toggle" id="navToggle">☰ Menú</button>
+      <nav class="tabs">
+        <button class="tab-btn active" data-target="panel-cuadro">Cuadro</button>
+        <button class="tab-btn" data-target="panel-equipos">Equipos</button>
+        <button class="tab-btn" data-target="panel-goleadores">Goleadores</button>
+        <button class="tab-btn" data-target="panel-tarjetas">Tarjetas</button>
+        <button class="tab-btn" data-target="panel-vallas">Vallas</button>
+        <button class="tab-btn" data-target="panel-reglamento">Reglamento</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero slash">
+    <div class="container">
+      <div class="eyebrow">CLUB DEPORTIVO F-10 · 4 CANCHAS SINTÉTICAS</div>
+      <h1>TORNEO<span class="accent">RELÁMPAGO⚡</span></h1>
+      <p class="sub">¡DEMUESTRA QUE TU EQUIPO ES EL MEJOR!</p>
+
+      <div class="info-bar">
+        <div class="info-pill">📅 <b>Domingo 20 de septiembre</b></div>
+        <div class="info-pill">🕓 <b>4:00 PM</b></div>
+        <div class="info-pill">📍 <b>Centro Comercial Carnaval, Piso 2 - Local 2060</b></div>
+      </div>
+
+      <div class="premios">
+        <div class="premio-card">
+          <div class="icon">🏆</div>
+          <div class="titulo">CAMPEÓN</div>
+          <div class="monto">$1.000.000</div>
+          <div class="de-pesos">DE PESOS</div>
+        </div>
+        <div class="premio-card">
+          <div class="icon">⚽</div>
+          <div class="titulo">GOLEADOR</div>
+          <div class="monto">$80.000</div>
+          <div class="de-pesos">DE PESOS</div>
+        </div>
+        <div class="premio-card">
+          <div class="icon">🧤</div>
+          <div class="titulo">ARQUERO MENOS VENCIDO</div>
+          <div class="monto">$60.000</div>
+          <div class="de-pesos">DE PESOS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <section class="panel active" id="panel-cuadro">
+      <div class="section">
+        <div class="section-title"><h2>Cuadro del Torneo</h2><div class="bar"></div></div>
+        <p class="section-desc">Fútbol 5 · Eliminación directa · 16 equipos · 15 partidos. Los resultados se actualizan en vivo.</p>
+        <div id="bracketContainer"><div class="empty-state">Cargando cuadro…</div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-equipos">
+      <div class="section">
+        <div class="section-title"><h2>Equipos Inscritos</h2><div class="bar"></div></div>
+        <p class="section-desc">Máximo 10 jugadores por equipo. CAP = capitán, POR = portero/arquero.</p>
+        <div class="grid" id="teamsGrid"><div class="empty-state">Cargando equipos…</div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-goleadores">
+      <div class="section">
+        <div class="section-title"><h2>Tabla de Goleadores</h2><div class="bar"></div></div>
+        <p class="section-desc">El máximo goleador del torneo se lleva $80.000 de pesos.</p>
+        <div id="scorersTable"><div class="empty-state">Cargando…</div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-tarjetas">
+      <div class="section">
+        <div class="section-title"><h2>Tarjetas</h2><div class="bar"></div></div>
+        <p class="section-desc">Amonestaciones y expulsiones registradas por la organización.</p>
+        <div id="cardsTable"><div class="empty-state">Cargando…</div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-vallas">
+      <div class="section">
+        <div class="section-title"><h2>Valla Menos Vencida</h2><div class="bar"></div></div>
+        <p class="section-desc">El equipo con menos goles recibidos se lleva $60.000 de pesos para su arquero.</p>
+        <div id="goalkeepersTable"><div class="empty-state">Cargando…</div></div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-reglamento">
+      <div class="section">
+        <div class="section-title"><h2>Reglamento</h2><div class="bar"></div></div>
+        <div class="reglas-grid">
+          <div class="regla-card"><div class="num">1</div><h4>Inscripción y jugadores</h4><ul>
+            <li>Máximo 10 jugadores por equipo.</li>
+            <li>Un jugador solo puede estar inscrito en un equipo durante el torneo.</li>
+            <li>Se debe entregar la planilla con los nombres antes del partido.</li>
+            <li>No se podrán agregar jugadores una vez iniciado el partido.</li>
+            <li>Uniforme o camisetas del mismo color.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">2</div><h4>Horario de llegada</h4><ul>
+            <li>Todos los equipos deben estar a las 3:45 p.m. en el establecimiento.</li>
+            <li>El partido inicia a la hora establecida.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">3</div><h4>Duración del partido</h4><ul>
+            <li>2 tiempos de 20 minutos.</li>
+            <li>Descanso de 5 minutos.</li>
+            <li>El reloj corre de manera continua.</li>
+            <li>El árbitro podrá agregar tiempo solo por situaciones que lo ameriten.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">4</div><h4>Cambios</h4><ul>
+            <li>Se permiten cambios ilimitados.</li>
+            <li>Deben hacerse solo cuando el árbitro lo autorice.</li>
+            <li>El jugador que sale debe abandonar primero el terreno.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">5</div><h4>Tarjetas</h4><ul>
+            <li>Amarilla: amonestación.</li>
+            <li>Doble amarilla: expulsión.</li>
+            <li>Roja directa: expulsión del partido.</li>
+            <li>Un jugador expulsado no podrá regresar.</li>
+            <li>Agresión física o conducta violenta puede generar suspensión o expulsión definitiva del torneo.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">6</div><h4>Árbitro</h4><ul>
+            <li>Las decisiones arbitrales deben ser respetadas.</li>
+            <li>Solo el capitán puede pedir aclaraciones, con respeto.</li>
+            <li>No se permiten insultos ni agresiones hacia árbitros, jugadores u organizadores.</li>
+            <li>El árbitro puede detener o finalizar un partido si hay condiciones inseguras.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">7</div><h4>Conducta y juego limpio</h4><ul>
+            <li>Se sanciona: agresiones físicas, amenazas, insultos graves, peleas, ingreso no autorizado, daños a instalaciones y discriminación.</li>
+            <li>Una pelea o agresión física puede significar expulsión del torneo.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">8</div><h4>Pagos</h4><ul>
+            <li>Inscripción: $200.000 por equipo.</li>
+            <li>Arbitraje no aplica en este torneo.</li>
+            <li>Los pagos deben hacerse antes de iniciar el partido correspondiente.</li>
+            <li>Equipo con pagos pendientes puede quedar impedido de jugar el siguiente encuentro.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">9</div><h4>Definición del ganador</h4><ul>
+            <li>Si es eliminación directa y hay empate: penales.</li>
+            <li>3 penales por equipo.</li>
+            <li>Si continúa el empate: muerte súbita.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">10</div><h4>Planilla oficial</h4><ul>
+            <li>Debe registrar jugadores, goles, tarjetas, resultado final, observaciones y firmas del árbitro y organizador.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">11</div><h4>Reclamaciones</h4><ul>
+            <li>Deben realizarse antes de abandonar las instalaciones.</li>
+            <li>Una vez firmada la planilla, el resultado es oficial.</li>
+            <li>Las reclamaciones serán revisadas por la organización.</li>
+          </ul></div>
+          <div class="regla-card"><div class="num">12</div><h4>Regla fundamental</h4><ul>
+            <li>El respeto es obligatorio.</li>
+            <li>La organización se reserva el derecho de expulsar del torneo a cualquier persona con conductas agresivas o violentas.</li>
+          </ul></div>
+        </div>
+
+        <div class="subhead">Reglas especiales de F-10</div>
+        <div class="reglas-grid">
+          <div class="regla-card"><h4>Cero tolerancia a las peleas</h4><ul>
+            <li>Una agresión física puede significar expulsión inmediata del torneo.</li>
+          </ul></div>
+          <div class="regla-card"><h4>El capitán responde por su equipo</h4><ul>
+            <li>Será el único autorizado para comunicarse con el árbitro durante el partido.</li>
+          </ul></div>
+          <div class="regla-card"><h4>La organización tiene la última palabra</h4><ul>
+            <li>Las situaciones no contempladas serán resueltas por la organización, buscando preservar la seguridad, el respeto y el desarrollo del torneo.</li>
+          </ul></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <a class="whatsapp" href="https://wa.me/573016030269" target="_blank" rel="noopener">📱 Escríbenos al 301 6030269</a>
+    <div>© <span id="year"></span> Club Deportivo F-10 · Torneo Relámpago</div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
